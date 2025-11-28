@@ -284,18 +284,16 @@
                 filterNews('');
             });
 
+            const navLinks = document.querySelectorAll('.nav-link');
+
             // Smooth scroll for navigation links
-            document.querySelectorAll('.nav-link').forEach(link => {
+            navLinks.forEach(link => {
                 link.addEventListener('click', (e) => {
                     e.preventDefault();
                     const href = link.getAttribute('href');
                     if (href.startsWith('#')) {
                         const targetId = href.substring(1);
-                        const targetElement = document.getElementById(targetId) ||
-                            (targetId === 'home' ? document.querySelector('.container') : null) ||
-                            (targetId === 'disasters' ? document.querySelector('.news-section') : null) ||
-                            (targetId === 'emergency' ? document.querySelector('.emergency-section') : null) ||
-                            (targetId === 'about' ? document.querySelector('.about-section') : null);
+                        const targetElement = document.getElementById(targetId);
 
                         if (targetElement) {
                             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -303,23 +301,42 @@
                     }
 
                     // Update active state
-                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    navLinks.forEach(l => l.classList.remove('active'));
                     link.classList.add('active');
+                    moveIndicator(link);
                 });
             });
 
             // Scroll-based active navigation
             const sections = [
-                { id: 'home', element: document.querySelector('.container') },
-                { id: 'disasters', element: document.querySelector('.news-section') },
-                { id: 'emergency', element: document.querySelector('.emergency-section') },
-                { id: 'about', element: document.querySelector('.about-section') }
+                { id: 'home', element: document.getElementById('home') },
+                { id: 'disasters', element: document.getElementById('disasters') },
+                { id: 'emergency', element: document.getElementById('emergency') },
+                { id: 'about', element: document.getElementById('about') }
             ];
 
-            const navLinks = document.querySelectorAll('.nav-link');
+            const navMenu = document.querySelector('.nav-menu');
+            let navIndicator = null;
+
+            if (navMenu) {
+                navIndicator = document.createElement('span');
+                navIndicator.className = 'nav-indicator';
+                navMenu.appendChild(navIndicator);
+            }
+
+            function moveIndicator(targetLink) {
+                if (!navIndicator || !navMenu || !targetLink) return;
+                const menuRect = navMenu.getBoundingClientRect();
+                const linkRect = targetLink.getBoundingClientRect();
+                const offsetLeft = linkRect.left - menuRect.left;
+                navIndicator.style.width = `${linkRect.width}px`;
+                navIndicator.style.transform = `translateX(${offsetLeft}px)`;
+                navIndicator.style.opacity = '1';
+            }
 
             function updateActiveNav() {
                 const scrollPosition = window.scrollY + 100; // Offset for navbar height
+                let latestActiveLink = null;
 
                 sections.forEach(section => {
                     if (section.element) {
@@ -335,6 +352,7 @@
                             const activeLink = document.querySelector(`.nav-link[href="#${section.id}"]`);
                             if (activeLink) {
                                 activeLink.classList.add('active');
+                                latestActiveLink = activeLink;
                             }
                         }
                     }
@@ -346,8 +364,15 @@
                     const homeLink = document.querySelector('.nav-link[href="#home"]');
                     if (homeLink) {
                         homeLink.classList.add('active');
+                        latestActiveLink = homeLink;
                     }
                 }
+
+                if (!latestActiveLink) {
+                    latestActiveLink = document.querySelector('.nav-link.active');
+                }
+
+                moveIndicator(latestActiveLink);
             }
 
             // Listen for scroll events
@@ -355,4 +380,12 @@
 
             // Initial check
             updateActiveNav();
+
+            const activeOnLoad = document.querySelector('.nav-link.active');
+            moveIndicator(activeOnLoad);
+
+            window.addEventListener('resize', () => {
+                const currentActive = document.querySelector('.nav-link.active');
+                moveIndicator(currentActive);
+            });
         });
