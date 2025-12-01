@@ -56,3 +56,17 @@ https://www.rappler.com/philippines/luzon/benguet-landslide-super-typhoon-nando-
 =======
 https://www.rappler.com/philippines/luzon/benguet-landslide-super-typhoon-nando-september-22-2025/
 >>>>>>> Stashed changes
+
+Source:
+
+https://newsinfo.inquirer.net/2118480/cebu-earthquake-death-toll-rises-to-72-aftershocks-continue
+
+https://www.philstar.com/the-freeman/cebu-news/2025/11/25/2489730/dangerous-rains-over-cebu-pagasa-verbena-may-trigger-flashfloods
+
+https://www.unocha.org/publications/report/philippines/philippines-super-typhoon-uwanfung-wong-consolidated-rapid-assessment-report-20-november-2025
+
+https://newsinfo.inquirer.net/2043063/wildfire-razes-section-of-mountain-in-zambales-tourist-town
+
+https://newsinfo.inquirer.net/2117756/taal-volcano-erupts-phivolcs
+
+https://www.rappler.com/philippines/luzon/benguet-landslide-super-typhoon-nando-september-22-2025/
