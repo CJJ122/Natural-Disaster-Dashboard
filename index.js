@@ -6,8 +6,8 @@
                 description: "MANILA, Philippines — The death toll from the magnitude 6.9 earthquake that struck Cebu has risen to 72, according to the latest situational report released by authorities on Thursday, Oct. 2.",
                 category: "Earthquake",
                 severity: "high",
-                date: "Nov 18, 2025",
-                icon: "🌍",
+                date: "Oct 2, 2025",
+                icon: "<img src='Picture/NewsInfoCebu-earthquake.jpg' alt='Cebu Earthquake' class='disaster-icon'>",
                 casualties: 53,
                 injured: 294,
                 displaced: 170959,
@@ -22,7 +22,7 @@
                 category: "Flooding",
                 severity: "high",
                 date: "November 24–25, 2025",
-                icon: "🌊",
+                icon: "<img src='Picture/floods-cebu.jpg' alt='Flash Floods' class='disaster-icon'>",
                 casualties: 0,
                 injured: 0,
                 displaced: 10000,
@@ -37,7 +37,7 @@
                 category: "Typhoon",
                 severity: "high",
                 date: " November 20, 2025",
-                icon: "🌪️",
+                icon: "<img src='Picture/super-typhoon-uwanfung-wong.jpg' alt='Super Typhoon Uwanfung Wong' class='disaster-icon'>",
                 casualties: 250,
                 injured: 0,
                 displaced: 271200,
@@ -52,7 +52,7 @@
                 category: "Wildfire",
                 severity: "medium",
                 date: "March 12, 2025",
-                icon: "🔥",
+                icon: "<img src='Picture/Wildfire razes section of mountain in Zambales tourist town.jpg' alt='Super Typhoon Uwanfung Wong' class='disaster-icon'>",
                 casualties: 0,
                 injured: 0,
                 displaced: 0,
@@ -67,7 +67,7 @@
                 category: "Volcanic Eruption",
                 severity: "low",
                 date: "October 1, 2025",
-                icon: "🌋",
+                icon: "<img src='Picture/Taal Volcano erupts.webp' alt='Flash Floods' class='disaster-icon'>",
                 casualties: 0,
                 injured: 0,
                 displaced: 0,
@@ -82,7 +82,7 @@
                 category: "Landslide",
                 severity: "High",
                 date: "September 22, 2025",
-                icon: "⛰️",
+                icon: "<img src='Picture/Benguet landslide.webp' alt='Flash Floods' class='disaster-icon'>",
                 casualties: 1,
                 injured: 7,
                 displaced: 0,
@@ -188,7 +188,7 @@
             const article = disasterNews.find(a => a.id === articleId);
             if (!article) return;
 
-            document.getElementById('modalIcon').textContent = article.icon;
+            document.getElementById('modalIcon').innerHTML = article.icon;
             document.getElementById('modalCategory').textContent = article.category;
             document.getElementById('modalTitle').textContent = article.title;
             document.getElementById('modalDate').textContent = article.date;
